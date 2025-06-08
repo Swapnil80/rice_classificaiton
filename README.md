@@ -10,6 +10,10 @@ This project implements a deep learning model to classify different varieties of
 - Training visualization and metrics
 - Support for multiple rice varieties
 
+## Dataset
+
+The dataset used for this project is sourced from Kaggle. You can find it [here](https://www.kaggle.com/datasets/your-kaggle-dataset-link).
+
 ## Project Structure
 
 ```
@@ -20,12 +24,7 @@ This project implements a deep learning model to classify different varieties of
 ├── Dockerfile        # Docker configuration
 ├── model.h5          # Trained model (generated after training)
 ├── classes.json      # Class labels (generated after training)
-└── rice_dataset/     # Dataset directory
-    ├── Arborio/
-    ├── Basmati/
-    ├── Ipsala/
-    ├── Jasmine/
-    └── Karacadag/
+└── rice_dataset/     # Dataset directory (not included in the repository)
 ```
 
 ## Setup and Installation
