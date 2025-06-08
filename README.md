@@ -68,46 +68,6 @@ docker run -p 3001:80 rice-sorter
 
 The application will be available at `http://localhost:3001`
 
-## AWS Deployment
-
-**Note:** The project is not yet deployed on AWS. Deployment instructions will be added once the process is completed.
-
-### Option A: Elastic Beanstalk
-
-1. Create a `Dockerrun.aws.json` file:
-```json
-{
-  "AWSEBDockerrunVersion": "1",
-  "Image": {
-    "Name": "rice-sorter",
-    "Update": "true"
-  },
-  "Ports": [
-    {
-      "ContainerPort": 80,
-      "HostPort": 80
-    }
-  ]
-}
-```
-
-2. Deploy using AWS Elastic Beanstalk Console or CLI
-
-### Option B: ECS + ECR
-
-1. Create an ECR repository:
-```bash
-aws ecr create-repository --repository-name rice-sorter
-```
-
-2. Push the image to ECR:
-```bash
-docker tag rice-sorter <your-ecr-uri>
-docker push <your-ecr-uri>
-```
-
-3. Deploy using ECS with Fargate or EC2
-
 ## Model Architecture
 
 The model uses a CNN architecture with:
