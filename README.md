@@ -64,12 +64,14 @@ docker build -t rice-sorter .
 
 2. Run the container:
 ```bash
-docker run -p 8501:8501 rice-sorter
+docker run -p 3001:80 rice-sorter
 ```
 
-The application will be available at `http://localhost:8501`
+The application will be available at `http://localhost:3001`
 
 ## AWS Deployment
+
+**Note:** The project is not yet deployed on AWS. Deployment instructions will be added once the process is completed.
 
 ### Option A: Elastic Beanstalk
 
@@ -83,7 +85,7 @@ The application will be available at `http://localhost:8501`
   },
   "Ports": [
     {
-      "ContainerPort": 8501,
+      "ContainerPort": 80,
       "HostPort": 80
     }
   ]
