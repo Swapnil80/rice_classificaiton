@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./rice-classifier-backend
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./rice-classifier-backend:/app
+    command: uvicorn main:app --host 0.0.0.0 --port 8001 --reload
+    depends_on:
+      - frontend
+    image: yourusername/rice-classifier-backend:latest
+
+  frontend:
+    build: ./rice-classifier-frontend
+    ports:
+      - "3001:80"
+    volumes:
+      - ./rice-classifier-frontend:/app
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    image: yourusername/rice-classifier-frontend:latest 
