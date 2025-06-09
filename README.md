@@ -26,6 +26,12 @@ docker-compose up --build
 - Upload a rice image to get the classification results
 - The model will show predictions for all five rice varieties with their confidence scores
 
+### Cloud Deployment (Azure Container Apps)
+
+This application is deployed on Azure Container Apps and can be accessed publicly:
+
+**Live Application URL:** [https://rice-classifier-frontend.redglacier-15579439.eastus.azurecontainerapps.io/](https://rice-classifier-frontend.redglacier-15579439.eastus.azurecontainerapps.io/)
+
 ### Screenshots
 
 The following screenshots illustrate the application's user interface and its prediction capabilities:
