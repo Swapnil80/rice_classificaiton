@@ -20,9 +20,8 @@ app.add_middleware(
 
 # Get the absolute path to the model in root directory
 current_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir = os.path.dirname(current_dir)
-model_path = os.path.join(parent_dir, 'model.h5')
-print("parent_dir", parent_dir)
+model_path = os.path.join(current_dir, 'model.h5')
+print("current_dir", current_dir)
 print("model_path", model_path)
 
 # Load model and classes
