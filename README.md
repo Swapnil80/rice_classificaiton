@@ -88,7 +88,7 @@ The model was trained with the following specifications:
 
 1. **Hardware Considerations**
    - Optimized for Apple Silicon MacBook
-   - Reduced training time (approximately 2 hours per epoch)
+   - Reduced training time (approximately 20 mins per epoch)
    - Efficient memory usage
    - Suitable for real-time inference
 
