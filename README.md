@@ -26,6 +26,19 @@ docker-compose up --build
 - Upload a rice image to get the classification results
 - The model will show predictions for all five rice varieties with their confidence scores
 
+### Screenshots
+
+The following screenshots illustrate the application's user interface and its prediction capabilities:
+
+**Initial Load:**
+![Initial Load](https://github.com/Swapnil80/rice_classificaiton/blob/main/initial_load.png?raw=true)
+
+**Image Selection:**
+![Image Selection](https://github.com/Swapnil80/rice_classificaiton/blob/main/image_selection.png?raw=true)
+
+**Prediction Results:**
+![Prediction Results](https://github.com/Swapnil80/rice_classificaiton/blob/main/prediction_results.png?raw=true)
+
 ### Using the Pre-trained Model
 
 The application comes with a pre-trained model that has been trained on a diverse dataset of rice images. You can:

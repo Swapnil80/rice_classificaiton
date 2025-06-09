@@ -1,3 +1,9 @@
+# Dataset directories
+Rice_Image_Dataset/
+rice_dataset/
+*.h5
+*.hdf5
+
 # Python
 __pycache__/
 *.py[cod]
@@ -51,4 +57,11 @@ build/
 
 # Logs
 *.log
-logs/ 
+logs/
+
+# OS
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db 
