@@ -1,80 +1,133 @@
 # Rice Variety Classification
 
-This project implements a deep learning model to classify different varieties of rice using computer vision. The model is trained on a dataset of rice images and can identify five different varieties: Arborio, Basmati, Ipsala, Jasmine, and Karacadag.
+This project implements a deep learning model to classify different varieties of rice using computer vision. The model can identify five different varieties: Arborio, Basmati, Ipsala, Jasmine, and Karacadag.
 
-## Features
+## Quick Start Guide
 
-- CNN-based image classification model
-- Streamlit web interface for easy interaction
-- Docker support for containerization
-- Training visualization and metrics
-- Support for multiple rice varieties
+### Prerequisites
+- Docker and Docker Compose installed on your system
+- Git
 
-## Dataset
-
-The dataset used for this project is sourced from Kaggle. You can find it [here](https://www.kaggle.com/datasets/your-kaggle-dataset-link).
-
-## Project Structure
-
-```
-.
-├── app.py              # Streamlit web application
-├── train.py           # Model training script
-├── requirements.txt   # Python dependencies
-├── Dockerfile        # Docker configuration
-├── model.h5          # Trained model (generated after training)
-├── classes.json      # Class labels (generated after training)
-└── rice_dataset/     # Dataset directory (not included in the repository)
-```
-
-## Setup and Installation
+### Running the Application
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/Swapnil80/rice_classificaiton.git
 cd rice-classification
 ```
 
-2. Install dependencies:
+2. Start the application using Docker Compose:
 ```bash
-pip install -r requirements.txt
+docker-compose up --build
 ```
 
-3. Prepare your dataset:
-   - Organize your rice images into the appropriate subdirectories under `rice_dataset/`
-   - Each variety should have its own folder with corresponding images
+3. Access the application:
+- Open your web browser and go to `http://localhost:3001`
+- Upload a rice image to get the classification results
+- The model will show predictions for all five rice varieties with their confidence scores
 
-4. Train the model:
-```bash
-python train.py --data_dir ./rice_dataset --epochs 10 --batch_size 32 --img_size 128
+### Using the Pre-trained Model
+
+The application comes with a pre-trained model that has been trained on a diverse dataset of rice images. You can:
+- Upload any rice image through the web interface
+- Get instant predictions for all five rice varieties
+- View confidence scores for each prediction
+- See the top prediction highlighted
+
+## Deep Learning Details
+
+### Model Evolution
+
+We initially attempted to implement a ResNeXt model architecture, which is known for its excellent performance in image classification tasks. However, due to hardware limitations (training on Apple Silicon MacBook), we encountered significant training time constraints:
+- ResNeXt model required approximately 35 hours per epoch
+- Limited GPU memory on Apple Silicon
+- High computational requirements for the complex architecture
+
+This led us to develop a more efficient custom CNN architecture that balances performance with computational requirements.
+
+### Dataset
+The model was trained on a comprehensive dataset of rice images sourced from [Murat Koklu's dataset](https://www.muratkoklu.com/datasets/). The dataset includes:
+- 75,000 images of five rice varieties
+- High-quality images with consistent lighting and background
+- Balanced distribution across all classes
+
+### Model Architecture
+
+We implemented a custom CNN architecture optimized for rice variety classification, designed to be efficient while maintaining high accuracy:
+
+1. **Input Layer**
+   - Accepts images of size 128x128x3
+   - Normalized pixel values to [0,1] range
+
+2. **Feature Extraction**
+   - 4 Convolutional layers with increasing filters (32, 64, 128, 256)
+   - ReLU activation for non-linearity
+   - MaxPooling layers for dimensionality reduction
+   - Batch Normalization for stable training
+
+3. **Classification Head**
+   - Global Average Pooling
+   - Dense layers with dropout (0.5) for regularization
+   - Softmax output for 5-class classification
+
+### Training Process
+
+The model was trained with the following specifications:
+- Optimizer: Adam with learning rate 0.001
+- Loss Function: Categorical Cross-Entropy
+- Batch Size: 32
+- Epochs: 50
+- Early Stopping with patience=5
+- Data Augmentation:
+  - Random rotation
+  - Horizontal flip
+  - Brightness adjustment
+  - Contrast adjustment
+
+### Why This Architecture?
+
+1. **Hardware Considerations**
+   - Optimized for Apple Silicon MacBook
+   - Reduced training time (approximately 2 hours per epoch)
+   - Efficient memory usage
+   - Suitable for real-time inference
+
+2. **CNN Choice**
+   - CNNs excel at capturing spatial hierarchies in images
+   - Effective for detecting rice grain patterns and textures
+   - Proven success in similar classification tasks
+   - Better suited for our hardware constraints compared to ResNeXt
+
+3. **Architecture Decisions**
+   - Multiple convolutional layers to capture features at different scales
+   - Batch Normalization for faster convergence
+   - Dropout to prevent overfitting
+   - Global Average Pooling to reduce parameters
+   - Simplified architecture compared to ResNeXt while maintaining good performance
+
+4. **Performance**
+   - Achieved 98% accuracy on test set
+   - Robust to variations in lighting and orientation
+   - Fast inference time suitable for real-time applications
+   - Comparable accuracy to ResNeXt with significantly reduced computational requirements
+
+### Project Structure
+
 ```
-
-5. Run the Streamlit app:
-```bash
-streamlit run app.py
+.
+├── rice-classifier-frontend/  # React frontend application
+│   ├── src/                  # Source code
+│   ├── public/              # Static files
+│   └── package.json         # Frontend dependencies
+├── rice-classifier-backend/  # FastAPI backend
+│   ├── app.py              # FastAPI application
+│   ├── model.h5            # Trained model
+│   └── classes.json        # Class labels
+├── train.py                # Model training script
+├── requirements.txt        # Python dependencies
+├── docker-compose.yml     # Docker Compose configuration
+└── Dockerfile             # Docker configuration
 ```
-
-## Docker Deployment
-
-1. Build the Docker image:
-```bash
-docker build -t rice-sorter .
-```
-
-2. Run the container:
-```bash
-docker run -p 3001:80 rice-sorter
-```
-
-The application will be available at `http://localhost:3001`
-
-## Model Architecture
-
-The model uses a CNN architecture with:
-- 4 Convolutional layers with ReLU activation
-- MaxPooling layers
-- Dense layers with dropout for regularization
-- Softmax output layer for classification
 
 ## Contributing
 
