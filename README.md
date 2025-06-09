@@ -31,13 +31,13 @@ docker-compose up --build
 The following screenshots illustrate the application's user interface and its prediction capabilities:
 
 **Initial Load:**
-![Initial Load](https://github.com/Swapnil80/rice_classificaiton/blob/main/initial_load.png?raw=true)
+![Initial Load](docs/images/initial_load.png)
 
 **Image Selection:**
-![Image Selection](https://github.com/Swapnil80/rice_classificaiton/blob/main/image_selection.png?raw=true)
+![Image Selection](docs/images/image_selection.png)
 
 **Prediction Results:**
-![Prediction Results](https://github.com/Swapnil80/rice_classificaiton/blob/main/prediction_results.png?raw=true)
+![Prediction Results](docs/images/prediction_results.png)
 
 ### Using the Pre-trained Model
 
