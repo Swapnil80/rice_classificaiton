@@ -53,6 +53,12 @@ The application comes with a pre-trained model that has been trained on a divers
 - View confidence scores for each prediction
 - See the top prediction highlighted
 
+### Model Validation Images
+
+For evaluating the model's predictive accuracy, a set of images from the original dataset that were **not** used during the training process have been provided. These images can be used to test the model's performance on unseen data and verify its generalization capabilities.
+
+You can find these validation images here: [docs/validation_images_not_trained/](docs/validation_images_not_trained/)
+
 ## Deep Learning Details
 
 ### Model Evolution
