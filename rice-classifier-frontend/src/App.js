@@ -57,6 +57,7 @@ function App() {
   return (
     <Container maxWidth="md">
       <Box sx={{ my: 4, textAlign: 'center' }}>
+        <img src="/RicelQ.png" alt="RiceIQ Logo" style={{ width: '150px', marginBottom: '20px' }} />
         <Typography variant="h3" component="h1" gutterBottom>
           🌾 Rice Variety Classifier
         </Typography>
